@@ -35,7 +35,12 @@ app.get("/", async (req, res) => {
     if (upload === "true") {
       const image = await (
         await captureWebsite()
-      ).default.buffer(url, { ...rest });
+      ).default.buffer(url, {
+        ...rest,
+        launchOptions: {
+          args: ["--no-sandbox", "--disable-setuid-sandbox"],
+        },
+      });
 
       const { url: ImageUrl } = await new Promise((resolve, reject) => {
         let cld_upload_stream = cloudinary.uploader.upload_stream(
@@ -57,7 +62,12 @@ app.get("/", async (req, res) => {
     } else {
       const buffer = await (
         await captureWebsite()
-      ).default.buffer(url, { ...rest });
+      ).default.buffer(url, {
+        ...rest,
+        launchOptions: {
+          args: ["--no-sandbox", "--disable-setuid-sandbox"],
+        },
+      });
       res.send(buffer);
     }
   } catch (error) {
