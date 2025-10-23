@@ -1,0 +1,38 @@
+{
+  "name": "Website Screenshot & Color Analysis API",
+  "description": "Extract colors, fonts, and logos from websites using smart HTML analysis",
+  "repository": "https://github.com/tkturners/website-screenshot-cloudinary",
+  "logo": "https://node-js-sample.herokuapp.com/node.png",
+  "keywords": ["node", "express", "puppeteer", "color-analysis", "screenshot", "fonts"],
+  "buildpacks": [
+    {
+      "url": "https://github.com/jontewks/puppeteer-heroku-buildpack.git"
+    },
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+  "env": {
+    "CLOUDINARY_CLOUD_NAME": {
+      "description": "Your Cloudinary cloud name",
+      "required": true
+    },
+    "CLOUDINARY_API_KEY": {
+      "description": "Your Cloudinary API key",
+      "required": true
+    },
+    "CLOUDINARY_API_SECRET": {
+      "description": "Your Cloudinary API secret",
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "basic"
+    }
+  },
+  "addons": [],
+  "scripts": {},
+  "stack": "heroku-22"
+}
