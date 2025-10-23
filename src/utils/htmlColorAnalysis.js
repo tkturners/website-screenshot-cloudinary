@@ -10,6 +10,7 @@ async function analyzeWebsiteColors(url) {
   try {
     browser = await puppeteer.launch({
       headless: "new",
+      executablePath: process.env.GOOGLE_CHROME_BIN || null,
       args: [
         '--no-sandbox',
         '--disable-setuid-sandbox',
@@ -17,8 +18,11 @@ async function analyzeWebsiteColors(url) {
         '--disable-accelerated-2d-canvas',
         '--no-first-run',
         '--no-zygote',
-        '--single-process', // <- this one doesn't work in Windows
-        '--disable-gpu'
+        '--single-process',
+        '--disable-gpu',
+        '--disable-background-timer-throttling',
+        '--disable-backgrounding-occluded-windows',
+        '--disable-renderer-backgrounding'
       ]
     });
     

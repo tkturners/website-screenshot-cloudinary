@@ -6,7 +6,10 @@
   "keywords": ["node", "express", "puppeteer", "color-analysis", "screenshot", "fonts"],
   "buildpacks": [
     {
-      "url": "https://github.com/jontewks/puppeteer-heroku-buildpack.git"
+      "url": "https://github.com/heroku/heroku-buildpack-google-chrome"
+    },
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-chromedriver"
     },
     {
       "url": "heroku/nodejs"
